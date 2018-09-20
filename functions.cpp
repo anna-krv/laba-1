@@ -8,10 +8,10 @@
 #include <stdlib.h>
 using namespace std;
 
-bool checkPrime(unsigned int x) {
+bool checkPrime(int x) {
 	bool isPrime = true;
-	unsigned int y = sqrt(x) + 1;
-	for (unsigned int xx = 2; xx <= y; xx++) {
+	int y = static_cast<int>(sqrt(x)) + 1;
+	for (int xx = 2; xx <= y; xx++) {
 		if (x%xx == 0) {
 			isPrime = false;
 			break;
@@ -20,30 +20,30 @@ bool checkPrime(unsigned int x) {
 	return isPrime;
 }
 
-unsigned int maxPrime(unsigned int x) {
+int maxPrime(int x) {
 	while (!checkPrime(x))
 		x--;
 	return x;
 }
 
 void header() {
-	cout << setw(12)<< "Interval"
-		<< setw(16) << "Frequency" <<endl;
+	cout << setw(8)<< "Interval"
+		<< setw(14) << "Frequency" <<endl;
 }
 
 void printHistogram(const double* g, int numOfElem, double startPoint, double step) {
 	header();
 	for (int i = 0; i < numOfElem; i++) {
-		cout << setw(4) << "[" << setw(4)  
+		cout << setw(1) << "[" << setw(4)  
 			<< startPoint + i*step << ";"
 			<< setw(4) 
 			<< startPoint + (i + 1)*step << "]";
-		cout<< setw(13)<<right<<g[i] << endl;
+		cout<< setw(12)<<right<<g[i] << endl;
 	}
 }
 
 
-int reverse(int n, int m) {
+int reverse(int n, const int m) {
 	n = n%m;
 	if (n == 1)
 		return 1;
